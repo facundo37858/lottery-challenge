@@ -6,7 +6,6 @@ const uniqueValueVerification=(arrOfNumbers:number[],numberToVerify:number):bool
    return arrOfNumbers.includes(numberToVerify)
   
 }
-
 const generateMatrizNumbersForColumn=(initIntervalNum:number,endIntervalNum:number,arrNumbers:number[]=[]):number[]=>{
   
     if(arrNumbers.length === 3){
@@ -47,5 +46,27 @@ const generateMatrixByTicket=(sizeTicket:number):number[][]=>{
 
     return matiz
 }
+const generateTicketOfLottery=(sizeTicket:number):number[][]=>{
+    const matrixOfTicket:number[][]=generateMatrixByTicket(sizeTicket)
+    for( let row=0; row < 3; row++ ){
+        let count=0
+        while (count < 4) {
+            let numberColRandom=randomNumberByInterval(matrixOfTicket.length-1,0)
+            
+            if(!matrixOfTicket[numberColRandom][row]){
+                continue
+            }
 
-// console.log(generateMatrixByTicket(9))
+            matrixOfTicket[numberColRandom][row]=0
+            count++
+        }
+    }
+    return matrixOfTicket
+}
+
+// let fullTicket=generateMatrixByTicket(9)
+// console.log("🚀 ~ file: index.ts ~ line 68 ~ fullTicket", fullTicket)
+// let lotteryTicket=generateTicketOfLottery(9)
+// console.log("🚀 ~ file: index.ts ~ line 70 ~ lotteryTicket", lotteryTicket)
+
+// // console.log(generateMatrixByTicket(9))
