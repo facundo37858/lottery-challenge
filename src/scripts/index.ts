@@ -2,18 +2,50 @@
 const randomNumberByInterval=(numberMax:number,numberMin:number):number =>{
     return Math.round(Math.random()*(numberMax-numberMin)+numberMin)
 }
-
-const generateMatrizNumbers=(initIntervalNum:number,endIntervalNum:number,initNumToCompare:number=0,arrNumbers:number[]=[]):number[]=>{
+const uniqueValueVerification=(arrOfNumbers:number[],numberToVerify:number):boolean=>{
+   return arrOfNumbers.includes(numberToVerify)
   
-    if(arrNumbers.length === 2){
+}
+
+const generateMatrizNumbersForColumn=(initIntervalNum:number,endIntervalNum:number,arrNumbers:number[]=[]):number[]=>{
+  
+    if(arrNumbers.length === 3){
         return arrNumbers
     }
 
     let ramdomNum=randomNumberByInterval(endIntervalNum,initIntervalNum)
            
-    if(ramdomNum !== initNumToCompare){
-        console.log('continue',arrNumbers)
-        return generateMatrizNumbers(initIntervalNum,endIntervalNum,initNumToCompare=ramdomNum,[...arrNumbers,ramdomNum])
+    if(!uniqueValueVerification(arrNumbers,ramdomNum)){
+        return generateMatrizNumbersForColumn(initIntervalNum,endIntervalNum,[...arrNumbers,ramdomNum])
     }
-    return generateMatrizNumbers(initIntervalNum,endIntervalNum,initNumToCompare=ramdomNum,arrNumbers)
+
+    return generateMatrizNumbersForColumn(initIntervalNum,endIntervalNum,arrNumbers)
 }
+const generateMatrixByTicket=(sizeTicket:number):number[][]=>{
+    const matiz:number[][]=[]
+    let initInterval=1
+    let endInterval=9
+
+    for(let i=0 ; i < sizeTicket ; i++){
+
+        const columnOfTicket= generateMatrizNumbersForColumn(initInterval,endInterval)
+        matiz.push(columnOfTicket)
+
+        if(!i){
+            initInterval=initInterval+9
+            endInterval=endInterval+10
+            continue
+        }
+        if(i === sizeTicket-2){
+            initInterval=initInterval+10
+            endInterval=endInterval+11
+            continue
+        }
+        initInterval=initInterval+10
+        endInterval=endInterval+10
+    }
+
+    return matiz
+}
+
+// console.log(generateMatrixByTicket(9))
