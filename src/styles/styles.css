@@ -1,0 +1,17 @@
+h1{
+    color:green;
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(9rem,1fr));
+    padding: 10px;
+    margin: auto auto;
+}
+.numbers{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
