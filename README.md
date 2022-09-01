@@ -15,7 +15,7 @@ Generar un programa que cree un cartón de bingo aleatorio y lo muestre por pant
 * CSS
 * Typescript
 
-## Correr el proyexto
+## Correr proyecto
 
 1. Clonar repo
 2. Abrir archivo html en el buscador
