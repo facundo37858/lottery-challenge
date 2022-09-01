@@ -1,5 +1,5 @@
 # Lottery - Challenge
-typescript## Generar Ticket Bingo
+## Generar Ticket Bingo
 Generar un programa que cree un cartón de bingo aleatorio y lo muestre por pantalla (puede ser una web, una app de consola, o la plataforma que gusten)
 
 - Cartón de 3 filas por 9 columnas
